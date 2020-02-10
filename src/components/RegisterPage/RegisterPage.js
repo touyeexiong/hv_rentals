@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 class RegisterPage extends Component {
   state = {
     username: '',
+    email_address: '',
     password: '',
   };
 
@@ -15,6 +16,7 @@ class RegisterPage extends Component {
         type: 'REGISTER',
         payload: {
           username: this.state.username,
+          email_address: this.state.email_address,
           password: this.state.password,
         },
       });
@@ -50,6 +52,17 @@ class RegisterPage extends Component {
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="email_address">
+              Email:
+              <input
+                type="text"
+                name="email_address"
+                value={this.state.email_address}
+                onChange={this.handleInputChangeFor('email_address')}
               />
             </label>
           </div>
