@@ -17,6 +17,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import Dashboard from '../Dashboard/Dashboard';
 import InfoPage from '../InfoPage/InfoPage';
 import Home from '../Home/Home';
+import PricingAvail from '../PricingAvail/PricingAvail'
 
 import './App.css';
 
@@ -45,8 +46,11 @@ class App extends Component {
             path="/home"
             component={Home}
             />
-            
-            
+            <Route
+            exact
+            path="/pricing-and-availability"
+            component={PricingAvail}
+            />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
