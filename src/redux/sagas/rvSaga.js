@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
-import { response } from 'express';
 
 function* fetchRVs() {
     try {
@@ -8,7 +7,7 @@ function* fetchRVs() {
         yield put({ type: 'SET_RVS', payload: response.data });
     }
     catch (error) {
-        console.log('RV Get request failed', errror);
+        console.log('RV Get request failed', error);
     }
 }
 

@@ -5,14 +5,14 @@ import PricingAvailItem from '../PricingAvailItem/PricingAvailItem'
 class PricingAvail extends Component {
 
     componentDidMount () {
-        getRVs();
+        // getRVs();
     }
 
-    getRVs = () => {
-        this.props.dispatch({
-            type: 'FETCH_RVS'
-        })
-    }
+    // getRVs = () => {
+    //     this.props.dispatch({
+    //         type: 'FETCH_RVS'
+    //     })
+    // }
 
     render() {
         return (
