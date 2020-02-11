@@ -9,6 +9,7 @@ class PricingAvailItem extends Component {
                 <div>{this.props.name}</div>
                 <div>{this.props.des}</div>
                 <button>Check Availability and Pricing</button>
+                {JSON.stringify(this.props.id)}
 
             </>
         )
