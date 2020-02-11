@@ -10,11 +10,11 @@ class PricingAvail extends Component {
                 type: 'FETCH_RVS'
             })
         }    
-    
 
 
-
-    render() {
+    render() { 
+        // console.log(this.props.history);
+               
         return (
             <>
             <h1>we in Pricing and Availability</h1>
@@ -24,6 +24,8 @@ class PricingAvail extends Component {
                 <PricingAvailItem id={rvs.id} key={rvs.id} name={rvs.rv_name} des={rvs.rv_description} imgPath={rvs.rv_image_path}/>
             )
             })}
+                {/* <button onClick={this.handleClick}>Check Availability and Pricing</button> */}
+
             </>
         )
     }
