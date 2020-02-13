@@ -10,17 +10,35 @@ class Reservation extends Component {
         })
     }
 
+    handleBooking = () => { 
+        let id = Number(this.props.match.params.id)
+        console.log(`we booking now`, id );
+        this.props.history.push(`/payment/${id}`)
+    }
+
 
 
     // testFunction = (id) => {
     //     let apples = Number(this.props.match.params.id)
-    //     let oranges = this.props.reduxState.rvs
-    //     console.log(oranges);
-    //     for (let i = 0; i <= oranges.length; i++) {
-    //         if (apples == oranges[i].id){
-    //             return <p>{oranges[i].rv_description}</p>
+    //     let rvs = this.props.reduxState.rvs
+    //     console.log(rvs.length);
+    //     for (let i = 0; i < rvs.length; i++) {
+    //         console.log(`I'm a log`);
+            
+    //         console.log(rvs[i]);
+            
+    //         if (apples == rvs[i].id){
+    //             return <p>{rvs[i].rv_description}</p>
     //         } else {
     //             return <h1>404</h1>
+    //         }
+    //     }
+    //     for (let rv of rvs) {
+    //         if (apples == rv.id) {
+    //             return rv.rv_description;
+    //         }
+    //         else {
+    //             return '404';
     //         }
     //     }
         
@@ -45,14 +63,14 @@ class Reservation extends Component {
                         <span key={rvSelected.id}>
                             {rvSelected.rv_description}
                         </span>
+                        <span><button onClick={this.handleBooking}>Continue to Booking</button></span>
                         </>
                         )
                     } else {
                         return(
                         <>
-                        <span key={rvSelected.id}>
-                            not the right rv fool!
-                        </span>
+                        {/* <span key={rvSelected.id}>
+                        </span> */}
                         </>)
                         
                         
@@ -60,6 +78,9 @@ class Reservation extends Component {
                 })}
             </div>
             </>
+            // <>
+            // {this.testFunction()}
+            // </>
 
         )
     }
