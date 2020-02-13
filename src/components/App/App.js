@@ -17,7 +17,8 @@ import AboutPage from '../AboutPage/AboutPage';
 import Dashboard from '../Dashboard/Dashboard';
 import InfoPage from '../InfoPage/InfoPage';
 import Home from '../Home/Home';
-import PricingAvail from '../PricingAvail/PricingAvail'
+import PricingAvail from '../PricingAvail/PricingAvail';
+import Reservation from '../Reservation/Reservation';
 
 import './App.css';
 
@@ -50,6 +51,11 @@ class App extends Component {
             exact
             path="/pricing-and-availability"
             component={PricingAvail}
+            />
+            <Route
+            exact 
+            path="/reservation/:id"
+            component={Reservation}
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
