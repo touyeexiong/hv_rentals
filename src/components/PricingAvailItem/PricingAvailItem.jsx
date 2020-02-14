@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import Reservation from '../Reservation/Reservation'
 
 class PricingAvailItem extends Component {
 
@@ -19,7 +17,7 @@ class PricingAvailItem extends Component {
     render() {
         return (
             <>
-                <div><img src={this.props.imgPath} /></div>
+                <div><img alt={this.props.des} src={this.props.imgPath} /></div>
                 <div>{this.props.name}</div>
                 <div>{this.props.des}</div>
                 <button onClick={this.handleClick}>Check Availability and Pricing</button>

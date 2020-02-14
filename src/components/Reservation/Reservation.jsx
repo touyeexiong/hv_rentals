@@ -61,16 +61,17 @@ class Reservation extends Component {
                                 <>
                                     {/* console.log(rvSelected.rv_description); */}
                                     <span key={rvSelected.id}>
-                                        <img src={rvSelected.rv_image_path} />
+                                        <img alt={rvSelected.rv_description} src={rvSelected.rv_image_path} />
                                         {rvSelected.rv_description}
                                     </span>
-                                    <div>FROM
+                                    <div>
+                                        PICK UP DATE
                         <input 
                         type='date'
                         name="startDate"
                         value={this.state.startDate} 
                         onChange={this.handleDateChangeFor('startDate')}/>
-                                        TO
+                                        RETURN DATE
                         <input 
                         type='date' 
                         name="returnDate"

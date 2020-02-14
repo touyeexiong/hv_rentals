@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PricingAvailItem from '../PricingAvailItem/PricingAvailItem'
-import rvsSaga from '../../redux/sagas/rvSaga';
 
 class PricingAvail extends Component {
 
