@@ -61,7 +61,7 @@ class App extends Component {
 
             <ProtectedRoute
             exact
-            path="/payment/:id"
+            path="/payment/:id/:start/:return"
             component={Payment}
             />
             {/* For protected routes, the view could show one of several things on the same route.
