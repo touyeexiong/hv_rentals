@@ -2,7 +2,10 @@ import { connect } from 'react-redux';
 import React, {Component} from 'react';
 
 class Payment extends Component {
+    
     render () {
+        console.log(this.props.match);
+        
         return (
             <>
             <div><h1>Payment Information</h1>
