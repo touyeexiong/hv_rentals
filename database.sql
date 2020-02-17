@@ -41,3 +41,7 @@ CREATE TABLE "reservation"
     "rv_id" integer NOT NULL REFERENCES "rvs",
     "user_id" integer NOT NULL REFERENCES "user"
 );
+
+SELECT "reservation".pick_up_date, "reservation".drop_off_date, "reservation".total_price
+FROM "reservation"
+    JOIN "user" ON "user".id = "reservation".user_id;

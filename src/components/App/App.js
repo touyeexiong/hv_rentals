@@ -20,6 +20,7 @@ import Home from '../Home/Home';
 import PricingAvail from '../PricingAvail/PricingAvail';
 import Reservation from '../Reservation/Reservation';
 import Payment from '../Payment/Payment';
+import Confirmation from '../Confirmation/Confirmation'
 
 import './App.css';
 
@@ -63,6 +64,12 @@ class App extends Component {
             exact
             path="/payment/:id/:start/:return"
             component={Payment}
+            />
+
+            <ProtectedRoute
+            exact 
+            path="/confirmation"
+            component={Confirmation}
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.

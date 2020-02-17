@@ -47,10 +47,11 @@ class Payment extends Component {
             type: 'POST_RESERVATION',
             payload: this.state,
         })
+        this.props.history.push('/confirmation');
     }
     
     render () {
-        console.log(this.props.reduxState.user.id);
+        console.log(this.props.history);
         
         return (
             <>
