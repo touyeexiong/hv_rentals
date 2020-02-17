@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
 class MyReservation extends Component {
 
     handleDelete = () => {
-        console.log('we trying to delete now', this.props.id);
+        console.log('we trying to delete now', this.props);
         this.props.dispatch({
             type: 'DELETE_RESERVATION',
             payload: this.props.id
         })
+        
     }
 
     render() {
@@ -25,4 +27,4 @@ class MyReservation extends Component {
     }
 }
 
-export default MyReservation;
+export default withRouter(connect()(MyReservation));

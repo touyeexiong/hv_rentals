@@ -26,4 +26,20 @@ console.log('this is the', pick_up_date);
     })
 })
 
+router.delete(`/delete/:id`, (req, res) =>{
+    console.log('this is id were deleting', req.params.id);
+    let queryText = `
+    DELETE FROM "reservation"
+    WHERE id=$1;
+    `
+    pool.query(queryText, [req.params.id])
+    .then((result) => {
+        res.sendStatus(200)
+    })
+    .catch((err) => {
+        res.sendStatus(500);
+        
+    })
+})
+
 module.exports = router;
