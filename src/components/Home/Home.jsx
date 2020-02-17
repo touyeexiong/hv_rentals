@@ -6,6 +6,7 @@ class Home extends Component {
         return (
             <>
             <h1>We at Home now</h1>
+
                 <img alt="main rv" src="https://i.ebayimg.com/images/g/TaEAAOSwJj1cz67N/s-l1600.jpg" />
             </>
         )

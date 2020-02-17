@@ -43,7 +43,10 @@ class Payment extends Component {
             total_price: costOfRental
         })
         console.log(this.state);
-
+        this.props.dispatch({
+            type: 'POST_RESERVATION',
+            payload: this.state,
+        })
     }
     
     render () {
