@@ -22,7 +22,7 @@ class PricingAvailItem extends Component {
                 <div>{this.props.des}</div>
                 <button onClick={this.handleClick}>Check Availability and Pricing</button>
             {/* <Reservation id={this.props.id} /> */}
-            </>
+            </> 
         )
     }
 }
