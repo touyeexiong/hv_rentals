@@ -8,7 +8,9 @@ router.get('/', (req,res) => {
     let queryText = `
     SELECT "reservation".pick_up_date, "reservation".drop_off_date, "reservation".total_price, "reservation".id
     FROM "reservation"
-    JOIN "user" ON "user".id = ${id};`;
+    JOIN "user" ON "user".id = "reservation".user_id
+    WHERE "user".id = ${id};
+    `;
     pool.query(queryText) 
     .then((result) => {
         res.send(result.rows)
