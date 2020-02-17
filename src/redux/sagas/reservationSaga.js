@@ -29,10 +29,24 @@ function* fetchReservation(action) {
     }
 }
 
+function* deleteReservation(action){
+    console.log('id of reser we are deleting', action.payload);
+    try {
+        let response = yield axios.delete(`/api/reservation/delete/${action.payload}`)
+        yield put({ type: 'FETCH_RESERVATION', payload: response.data })
+    }
+    catch (error) {
+        console.log('error in delete', error);
+        
+    }
+    
+}
+
 
 function* reservationSaga() {
     yield takeLatest('POST_RESERVATION', reservedSpot);
     yield takeLatest('FETCH_RESERVATION', fetchReservation)
+    yield takeLatest('DELETE_RESERVATION', deleteReservation)
 }
 
 export default reservationSaga;

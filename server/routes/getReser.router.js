@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req,res) => {
-    console.log(req.user.id);
+    // console.log(req.user.id);
     let id = req.user.id;
     let queryText = `
     SELECT "reservation".pick_up_date, "reservation".drop_off_date, "reservation".total_price, "reservation".id

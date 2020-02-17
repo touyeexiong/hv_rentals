@@ -48,7 +48,7 @@ class Payment extends Component {
             payload: this.state,
         })
         this.props.history.push('/confirmation');
-    }
+}
     
     render () {
         console.log(this.props.history);

@@ -45,3 +45,7 @@ CREATE TABLE "reservation"
 SELECT "reservation".pick_up_date, "reservation".drop_off_date, "reservation".total_price
 FROM "reservation"
     JOIN "user" ON "user".id = "reservation".user_id;
+
+SELECT "person".name, "hobby".description, "person_hobby".skill
+FROM "person"
+    JOIN "person_hobby" ON "person".id = "person_hobby".person_id
