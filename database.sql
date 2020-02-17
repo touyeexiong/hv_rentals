@@ -49,3 +49,8 @@ FROM "reservation"
 SELECT "person".name, "hobby".description, "person_hobby".skill
 FROM "person"
     JOIN "person_hobby" ON "person".id = "person_hobby".person_id
+
+    SELECT "person".name, "hobby".description, "person_hobby".skill
+FROM "person"
+    JOIN "person_hobby" ON "person".id = "person_hobby".person_id
+    JOIN "hobby" ON "hobby".id = "person_hobby".hobby_id;
