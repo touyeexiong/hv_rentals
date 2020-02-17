@@ -15,20 +15,9 @@ class Payment extends Component {
     componentDidMount() {
         // this.getDays();
         // this.infoToSend()
+        this.getInfo();
     }
-    getDays = () => {
-        // let date1 = moment(this.props.match.params.start);
-        // let date2 = moment(this.props.match.params.return);
-        // let daysOfRental = date2.diff(date1, 'days')
-        // console.log(daysOfRental);
-        // let costOfRental = daysOfRental * 100;
-        // console.log(costOfRental);
-        // console.log(this.props.reduxstate.user.id);
-        
-
-    }
-
-    infoToSend = () => {
+    getInfo = () => {
         let date1 = moment(this.props.match.params.start);
         let date2 = moment(this.props.match.params.return);
         let daysOfRental = date2.diff(date1, 'days')
@@ -42,6 +31,10 @@ class Payment extends Component {
             user_id: this.props.reduxState.user.id,
             total_price: costOfRental
         })
+    }
+
+    infoToSend = () => {
+
         console.log(this.state);
         this.props.dispatch({
             type: 'POST_RESERVATION',
@@ -51,7 +44,7 @@ class Payment extends Component {
 }
     
     render () {
-        console.log(this.props.history);
+        console.log(this.state);
         
         return (
             <>
@@ -61,7 +54,7 @@ class Payment extends Component {
                 <h1>Reservation Details</h1>
             </div>
             <PayPalButton 
-            amount ="100"
+            amount = {this.state.total_price}
             onSuccess={this.infoToSend
                 
                 // (details, data) => {
