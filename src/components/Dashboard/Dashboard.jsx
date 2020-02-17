@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import MyReser from '../MyReservation/MyReservation';
+import DashNav from '../DashNav/DashNav'
 
 
 // this could also be written with destructuring parameters as:
@@ -39,6 +40,7 @@ class UserPage extends Component {
   render() {
     return (
       <>
+      <DashNav />
         <h1 id="welcome">
           Welcome, {this.props.user.username} !
       </h1>

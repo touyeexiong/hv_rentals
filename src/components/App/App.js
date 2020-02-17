@@ -20,7 +20,8 @@ import Home from '../Home/Home';
 import PricingAvail from '../PricingAvail/PricingAvail';
 import Reservation from '../Reservation/Reservation';
 import Payment from '../Payment/Payment';
-import Confirmation from '../Confirmation/Confirmation'
+import Confirmation from '../Confirmation/Confirmation';
+import Profile from '../Profile/Profile'
 
 import './App.css';
 
@@ -86,6 +87,11 @@ class App extends Component {
               exact
               path="/info"
               component={InfoPage}
+            />
+            <ProtectedRoute
+            exact
+            path="/profile"
+            component={Profile}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
