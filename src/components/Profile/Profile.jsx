@@ -17,7 +17,9 @@ class Profile extends Component {
             <>
             <DashNav />
             <h2>we in Profile now</h2>
-            {JSON.stringify(this.props.reduxState.user)}
+            <div><h3>Username: {this.props.reduxState.user.username}</h3></div>
+            <div><h3>Email: {this.props.reduxState.user.email_address}</h3></div>
+            {/* {JSON.stringify(this.props.reduxState.user)} */}
             </>
         )
     }

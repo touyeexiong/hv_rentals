@@ -16,7 +16,7 @@ class MyReservation extends Component {
     render() {
         return (
             <>
-            <tr>
+            <tr>    <td>{this.props.id}</td>
                     <td>{this.props.start}</td>
                     <td>{this.props.end}</td>
                     <td>$ {this.props.price}</td>

@@ -47,6 +47,7 @@ class UserPage extends Component {
       <table>
         <thead>
           <tr>
+            <td>RESERVATION ID</td>
             <td>PICK UP DATE</td>
             <td>RETURN DATE</td>
             <td>TOTAL PRICE</td>
