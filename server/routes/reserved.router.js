@@ -9,6 +9,7 @@ router.post('/reserved', (req,res) => {
     const rv_id = req.body.rv_id;
     const user_id = req.body.user_id;
     const total_price = req.body.total_price;
+console.log('this is the', pick_up_date);
 
     const queryText = 
     `INSERT INTO "reservation"
