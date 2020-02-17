@@ -17,6 +17,11 @@ class MyReservation extends Component {
         
     }
 
+    handleUpdate = () => {
+        console.log('we trying to update bro', this.props.id);
+        this.props.history.push(`/dashboard/update/${this.props.id}`);
+    }
+
     render() {
         return (
             <>
@@ -27,6 +32,7 @@ class MyReservation extends Component {
                     <td>{moment(this.props.start).format("LL")}</td>
                     <td>{moment(this.props.end).format("LL")}</td>
                     <td>$ {this.props.price}</td>
+                    <td><button onClick={this.handleUpdate}>UPDATE RESERVATION</button></td>
                     <td><button onClick={this.handleDelete}>CANCEL RESERVATION</button></td>
             </tr>
             </>

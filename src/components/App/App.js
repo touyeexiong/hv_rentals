@@ -22,6 +22,7 @@ import Reservation from '../Reservation/Reservation';
 import Payment from '../Payment/Payment';
 import Confirmation from '../Confirmation/Confirmation';
 import Profile from '../Profile/Profile'
+import Update from '../Update/Update'
 
 import './App.css';
 
@@ -92,6 +93,11 @@ class App extends Component {
             exact
             path="/profile"
             component={Profile}
+            />
+            <ProtectedRoute
+            exact
+            path="/dashboard/update/:id"
+            component={Update}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

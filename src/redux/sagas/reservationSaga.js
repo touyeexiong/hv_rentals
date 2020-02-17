@@ -42,11 +42,24 @@ function* deleteReservation(action){
     
 }
 
+function* updateReservation(action){
+    console.log('data that we need', action.payload);
+    try {
+        let response = yield axios.put(`/api/reservation/update/${action.payload.reservation_id}`, action.payload);
+        yield put({ type: 'PUT_RESERVATION', payload: response.data})
+    }
+    catch (error) {
+        console.log('error in put', error);
+        
+    }
+}
+
 
 function* reservationSaga() {
     yield takeLatest('POST_RESERVATION', reservedSpot);
     yield takeLatest('FETCH_RESERVATION', fetchReservation)
     yield takeLatest('DELETE_RESERVATION', deleteReservation)
+    yield takeLatest('UPDATE_RESERVATION', updateReservation)
 }
 
 export default reservationSaga;

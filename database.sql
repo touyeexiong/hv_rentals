@@ -32,7 +32,6 @@ CREATE TABLE "rvs"
 );
 
 
-
 CREATE TABLE "reservation"
 (
     "id" SERIAL PRIMARY KEY,
@@ -54,3 +53,6 @@ FROM "person"
 FROM "person"
     JOIN "person_hobby" ON "person".id = "person_hobby".person_id
     JOIN "hobby" ON "hobby".id = "person_hobby".hobby_id;
+
+    UPDATE "treats" SET "description" = 'donuts are not good'
+                 WHERE "id" = 2;
