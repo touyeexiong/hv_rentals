@@ -25,8 +25,8 @@ class Payment extends Component {
         let costOfRental = daysOfRental * 100;
         console.log(costOfRental);
         this.setState({
-            pick_up_date: this.props.match.params.start,
-            drop_off_date: this.props.match.params.return,
+            pick_up_date: moment(this.props.match.params.start).format("LL"),
+            drop_off_date: moment(this.props.match.params.return).format("LL"),
             rv_id: this.props.match.params.id,
             user_id: this.props.reduxState.user.id,
             total_price: costOfRental
