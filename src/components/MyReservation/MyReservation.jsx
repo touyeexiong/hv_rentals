@@ -6,14 +6,6 @@ import moment from 'moment'
 class MyReservation extends Component {
 
     componentDidMount() {
-        this.handleDate();
-    }
-
-    handleDate = () => {
-        let date = this.props.start;
-        moment(date).format('DD-MM-YYYY');
-        console.log(date);
-        
     }
 
     handleDelete = () => {
@@ -30,6 +22,8 @@ class MyReservation extends Component {
             <>
             <tr>    
                     <td>{this.props.id}</td>
+                    <td>{this.props.rv}</td>
+                    <td>{this.props.rvDes}</td>
                     <td>{moment(this.props.start).format("LL")}</td>
                     <td>{moment(this.props.end).format("LL")}</td>
                     <td>$ {this.props.price}</td>

@@ -6,9 +6,10 @@ router.get('/', (req,res) => {
     // console.log(req.user.id);
     let id = req.user.id;
     let queryText = `
-    SELECT "reservation".pick_up_date, "reservation".drop_off_date, "reservation".total_price, "reservation".id
+    SELECT "rvs".rv_name, "rvs".rv_description, "rvs".rv_image_path, "reservation".pick_up_date, "reservation".drop_off_date, "reservation".total_price, "reservation".id
     FROM "reservation"
     JOIN "user" ON "user".id = "reservation".user_id
+    JOIN "rvs" ON "rvs".id = "reservation".rv_id
     WHERE "user".id = ${id};
     `;
     pool.query(queryText) 

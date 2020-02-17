@@ -48,6 +48,8 @@ class UserPage extends Component {
         <thead>
           <tr>
             <td>RESERVATION ID</td>
+            <td>RV</td>
+            <td>RV DESCRIPTION</td>
             <td>PICK UP DATE</td>
             <td>RETURN DATE</td>
             <td>TOTAL PRICE</td>
@@ -56,7 +58,7 @@ class UserPage extends Component {
           </tr>
             {this.props.getReser.map((reser) => {
               return (
-                <MyReser key={reser.id} id={reser.id} start={reser.pick_up_date} end={reser.drop_off_date} price={reser.total_price} />
+                <MyReser key={reser.id} rv={reser.rv_name} rvDes={reser.rv_description} id={reser.id} start={reser.pick_up_date} end={reser.drop_off_date} price={reser.total_price} />
               )
             })}
         </thead>
