@@ -44,15 +44,30 @@ router.delete(`/delete/:id`, (req, res) => {
 
 router.put('/update/:id', (req, res) => {
     console.log('update data is', req.body);
-    let user = req.user.id;
+    console.log('user', req.user);
+    
+    const pick_up_date = req.body.startDate;
+    const drop_off_date = req.body.returnDate;
+    const total_price = req.body.updated_price;
+    const user_id = req.user.id;
+    const id = req.body.reservation_id
+
     let queryText = `
     UPDATE "reservation" 
-    SET "pick_up_date" = 'req.body.startDate, 
-    "drop_off_date" = 'req.body.returnDate', 
-    "user_id"= '2',
-    "total_price" = 
-    WHERE "id" = 2;
-    `
+    SET "pick_up_date" = $1, 
+    "drop_off_date" = $2, 
+    "user_id"= $3,
+    "total_price" = $4
+    WHERE "id" = $5;
+    `;
+    pool.query(queryText, [pick_up_date, drop_off_date, user_id, total_price, id])
+    .then ((result) => {
+        res.sendStatus(200);
+    })
+    .catch ((err) => {
+        console.log(err);
+        res.sendStatus(500);
+    })
 })
 
 module.exports = router;
