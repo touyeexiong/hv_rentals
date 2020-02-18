@@ -10,9 +10,18 @@ class Reservation extends Component {
     }
 
     componentDidMount() {
-        // this.testFunction();
+        this.handleReservation();
         this.props.dispatch({
             type: 'FETCH_RVS'
+        })
+    }
+
+    // need a function that compares startDate/returnDate against reservations
+    // already made to check for conflicts
+    handleReservation = () => {
+        this.props.dispatch({
+            type: 'FETCH_RESERVED_ALREADY',
+            payload: Number(this.props.match.params.id)
         })
     }
 

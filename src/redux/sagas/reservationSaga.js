@@ -54,12 +54,25 @@ function* updateReservation(action){
     }
 }
 
+function* reservedAlready(action) {
+    console.log('rv id: ', action.payload);
+    try{
+        let response = yield axios.get(`/api/reservation/${action.payload}`)
+        yield put ({ type: 'GET_RESERVED_ALREADY', payload: response.data})
+    }
+    catch (error) {
+        console.log('error in get reserved already', error);
+        
+    }
+}
+
 
 function* reservationSaga() {
     yield takeLatest('POST_RESERVATION', reservedSpot);
     yield takeLatest('FETCH_RESERVATION', fetchReservation)
     yield takeLatest('DELETE_RESERVATION', deleteReservation)
     yield takeLatest('UPDATE_RESERVATION', updateReservation)
+    yield takeLatest('FETCH_RESERVED_ALREADY', reservedAlready)
 }
 
 export default reservationSaga;
