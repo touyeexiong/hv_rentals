@@ -58,7 +58,7 @@ function* reservedAlready(action) {
     console.log('rv id: ', action.payload);
     try{
         let response = yield axios.get(`/api/reservation/${action.payload}`)
-        yield put ({ type: 'GET_RESERVED_ALREADY', payload: response.data})
+        yield put ({ type: 'RESERVATION_BY_RV', payload: response.data})
     }
     catch (error) {
         console.log('error in get reserved already', error);
