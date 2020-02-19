@@ -10,6 +10,7 @@ class ReservedDates extends Component {
                     <td></td>
                     <td>{moment(this.props.start).format("LL")}</td>
                     <td>{moment(this.props.end).format("LL")}</td>
+                    <td>{this.props.date}</td>
 
             </tr>
             </>

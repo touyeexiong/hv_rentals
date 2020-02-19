@@ -33,16 +33,6 @@ class Update extends Component {
         })
     }
 
-    // priceConditional = (updated_price, price2) => {
-    //     if (updated_price > price2) {
-    //         console.log('price is higher now', updated_price);
-
-    //     } else {
-    //         console.log(updated_price, 'price is lower', price2);
-
-    //     }
-    // }
-
     handleDateChangeFor = dateSelections => (event) => {
         this.setState({
             [dateSelections]: event.target.value,
