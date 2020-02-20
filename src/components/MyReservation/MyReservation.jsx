@@ -18,8 +18,8 @@ class MyReservation extends Component {
     }
 
     handleUpdate = () => {
-        console.log('we trying to update bro', this.props.id);
-        this.props.history.push(`/dashboard/update/${this.props.id}`);
+        console.log('we trying to update bro', this.props.rv_id);
+        this.props.history.push(`/dashboard/update/${this.props.id}/${this.props.rv_id}`);
     }
 
     render() {

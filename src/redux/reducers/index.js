@@ -5,6 +5,7 @@ import user from './userReducer';
 import rvs from './rvsReducer';
 import getReser from './getReserReducer';
 import reservationByRv from './reservationByRv'
+import reserById from './reserByIdReducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   rvs, // will return the rvs
   getReser, // will return reservation made by specific id
   reservationByRv, // will return reservation dates for rv_id
+  reserById,
 });
 
 export default rootReducer;

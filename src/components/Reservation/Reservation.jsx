@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import ReservedDates from '../ReservedDates/ReservedDates'
+// import ReservedDates from '../ReservedDates/ReservedDates'
 
 class Reservation extends Component {
 
@@ -57,7 +57,7 @@ class Reservation extends Component {
         let id = Number(this.props.match.params.id)
         let dates = this.state;
         console.log(`we booking now`, id);
-        if (this.state.startDate != '' || this.state.returnDate != '') {
+        if (this.state.startDate !== '' || this.state.returnDate !== '') {
             this.props.history.push(`/payment/${id}/${dates.startDate}/${dates.returnDate}`)
         }
         else {

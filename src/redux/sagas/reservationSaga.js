@@ -20,13 +20,24 @@ function* fetchReservation(action) {
     try {
         const response = yield axios.get('/api/myreservation', action.payload)
         yield put({ type: 'SET_RESERVATIONS', payload: response.data });
-        console.log(action.payload);
 
     }
     catch (error) {
         console.log('reservvation GET has an error', error);
 
     }
+}
+
+function* resById(action) {
+    try{
+        const response = yield axios.get(`/api/myreservation/${action.payload}`)
+        yield put ({ type: `SET_RESERVATION_BY_ID`, payload: response.data})
+    }
+    catch (error) {  
+        console.log('reserById error', error);
+        
+    }
+    
 }
 
 function* deleteReservation(action){
@@ -73,6 +84,7 @@ function* reservationSaga() {
     yield takeLatest('DELETE_RESERVATION', deleteReservation)
     yield takeLatest('UPDATE_RESERVATION', updateReservation)
     yield takeLatest('FETCH_RESERVED_ALREADY', reservedAlready)
+    yield takeLatest('FETCH_RESERVATION_BY_ID', resById)
 }
 
 export default reservationSaga;
