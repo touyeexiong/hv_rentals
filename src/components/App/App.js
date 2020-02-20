@@ -96,7 +96,7 @@ class App extends Component {
             />
             <ProtectedRoute
             exact
-            path="/dashboard/update/:id"
+            path="/dashboard/update/:id/:rv_id"
             component={Update}
             />
             {/* If none of the other routes matched, we will show a 404. */}

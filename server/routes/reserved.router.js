@@ -3,6 +3,25 @@ const pool = require('../modules/pool');
 
 const router = express.Router();
 
+router.get('/:id', (req, res) => {
+    console.log('id of rv we need: ', req.params.id);
+    let id = req.params.id;
+    let queryText = 
+    `
+    SELECT *
+    FROM "reservation"
+    WHERE "rv_id" = $1;
+    `;
+    pool.query(queryText, [id])
+    .then((result) => {
+        res.send(result.rows)
+    })
+    .catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+    })
+})
+
 router.post('/reserved', (req, res) => {
     const pick_up_date = req.body.pick_up_date;
     const drop_off_date = req.body.drop_off_date;

@@ -4,6 +4,8 @@ import PricingAvailItem from '../PricingAvailItem/PricingAvailItem'
 
 class PricingAvail extends Component {
 
+
+
     componentDidMount () {
             this.props.dispatch({
                 type: 'FETCH_RVS'
