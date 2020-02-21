@@ -25,8 +25,6 @@ class Update extends Component {
     }
 
     getReserById = () => {
-        console.log('this is reserbyid', this.props.match.params.id);
-
         this.props.dispatch({
             type: 'FETCH_RESERVATION_BY_ID',
             payload: Number(this.props.match.params.id)
@@ -45,15 +43,12 @@ class Update extends Component {
         let date1 = moment(this.state.startDate);
         let date2 = moment(this.state.returnDate);
         let daysOfRental = date2.diff(date1, 'days')
-        console.log(daysOfRental);
         let updated_price = 100 * daysOfRental
         this.setState({
-
             startDate: this.state.startDate,
             returnDate: this.state.returnDate,
             updated_price: updated_price,
             reservation_id: this.props.match.params.id
-
         })
         this.handlePaymentToggle(updated_price);
     }
@@ -61,7 +56,6 @@ class Update extends Component {
     handlePaymentToggle = (newPrice) => {
         let originalPrice = this.props.reduxState.reserById.total_price
         if (newPrice > originalPrice) {
-            console.log('newPrice is higher', newPrice);
             this.setState({
                 priceDifference: newPrice - originalPrice
             })
@@ -88,7 +82,6 @@ class Update extends Component {
                 })
                 return false;
             }
-
         }
         this.setState({
             [dateSelections]: event.target.value
@@ -96,12 +89,6 @@ class Update extends Component {
     }
 
     render() {
-        console.log('old price: ', this.props.reduxState.reserById.total_price);
-        console.log('new price: ', this.state.updated_price);
-        console.log(this.state);
-
-
-
         return (
             <>
                 <h1>UPDATE RESERVATION</h1>

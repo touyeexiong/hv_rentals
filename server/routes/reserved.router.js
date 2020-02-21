@@ -4,22 +4,21 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/:id', (req, res) => {
-    console.log('id of rv we need: ', req.params.id);
     let id = req.params.id;
-    let queryText = 
-    `
+    let queryText =
+        `
     SELECT *
     FROM "reservation"
     WHERE "rv_id" = $1;
     `;
     pool.query(queryText, [id])
-    .then((result) => {
-        res.send(result.rows)
-    })
-    .catch((err) => {
-        console.log(err);
-        res.sendStatus(500);
-    })
+        .then((result) => {
+            res.send(result.rows)
+        })
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+        })
 })
 
 router.post('/reserved', (req, res) => {
@@ -28,7 +27,6 @@ router.post('/reserved', (req, res) => {
     const rv_id = req.body.rv_id;
     const user_id = req.body.user_id;
     const total_price = req.body.total_price;
-    console.log('this is the', pick_up_date);
 
     const queryText =
         `INSERT INTO "reservation"
@@ -46,7 +44,6 @@ router.post('/reserved', (req, res) => {
 })
 
 router.delete(`/delete/:id`, (req, res) => {
-    console.log('this is id were deleting', req.params.id);
     let queryText = `
     DELETE FROM "reservation"
     WHERE id=$1;
@@ -62,9 +59,7 @@ router.delete(`/delete/:id`, (req, res) => {
 })
 
 router.put('/update/:id', (req, res) => {
-    console.log('update data is', req.body);
-    console.log('user', req.user);
-    
+
     const pick_up_date = req.body.pick_up_date;
     const drop_off_date = req.body.drop_off_date;
     const total_price = req.body.price;
@@ -80,13 +75,13 @@ router.put('/update/:id', (req, res) => {
     WHERE "id" = $5;
     `;
     pool.query(queryText, [pick_up_date, drop_off_date, user_id, total_price, id])
-    .then ((result) => {
-        res.sendStatus(200);
-    })
-    .catch ((err) => {
-        console.log(err);
-        res.sendStatus(500);
-    })
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+        })
 })
 
 module.exports = router;

@@ -5,7 +5,6 @@ function* reservedSpot(action) {
     try {
         // passes the reservation details from the payload to the server
         yield axios.post('/api/reservation/reserved', action.payload);
-        console.log('this is what is in reservation post', action.payload);
 
         yield put({
             type: 'GET_RESERVATION'
@@ -42,7 +41,6 @@ function* resById(action) {
 }
 
 function* deleteReservation(action) {
-    console.log('id of reser we are deleting', action.payload);
     try {
         let response = yield axios.delete(`/api/reservation/delete/${action.payload}`)
         yield put({ type: 'FETCH_RESERVATION', payload: response.data })
@@ -55,7 +53,6 @@ function* deleteReservation(action) {
 }
 
 function* updateReservation(action) {
-    console.log('data that we need', action.payload);
     try {
         let response = yield axios.put(`/api/reservation/update/${action.payload.reservation_id}`, action.payload);
         yield put({ type: 'PUT_RESERVATION', payload: response.data })
@@ -68,7 +65,6 @@ function* updateReservation(action) {
 }
 
 function* reservedAlready(action) {
-    console.log('rv id: ', action.payload);
     try {
         let response = yield axios.get(`/api/reservation/${action.payload}`)
         yield put({ type: 'RESERVATION_BY_RV', payload: response.data })

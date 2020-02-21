@@ -24,7 +24,6 @@ class Payment extends Component {
     getInfo = () => {
 
         if (this.props.update === true){
-            console.log('we updating now', this.props);
             return this.setState({
                 pick_up_date: this.props.pick_up_date,
                 drop_off_date: this.props.drop_off_date,
@@ -38,9 +37,7 @@ class Payment extends Component {
             let date1 = moment(this.props.match.params.start);
             let date2 = moment(this.props.match.params.return);
             let daysOfRental = date2.diff(date1, 'days')
-            console.log(daysOfRental);
             let costOfRental = daysOfRental * 100;
-            console.log(costOfRental);
            return this.setState({
                 pick_up_date: moment(this.props.match.params.start).format("LL"),
                 drop_off_date: moment(this.props.match.params.return).format("LL"),
@@ -84,11 +81,6 @@ class Payment extends Component {
 
     
     render () {        
-        console.log(this.state);
-        
-        console.log(this.state.priceToCharge);
-        
-        
         return (
             <>
             <div><h1>Payment Information</h1>
