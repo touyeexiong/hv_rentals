@@ -65,9 +65,9 @@ router.put('/update/:id', (req, res) => {
     console.log('update data is', req.body);
     console.log('user', req.user);
     
-    const pick_up_date = req.body.startDate;
-    const drop_off_date = req.body.returnDate;
-    const total_price = req.body.updated_price;
+    const pick_up_date = req.body.pick_up_date;
+    const drop_off_date = req.body.drop_off_date;
+    const total_price = req.body.price;
     const user_id = req.user.id;
     const id = req.body.reservation_id
 

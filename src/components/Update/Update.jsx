@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import Popup from 'reactjs-popup';
+import './Update.css'
+import Payment from '../Payment/Payment'
 
 class Update extends Component {
     state = {
@@ -8,7 +11,8 @@ class Update extends Component {
         returnDate: '',
         updated_price: 0,
         reservation_id: 0,
-
+        priceDifference: 0,
+        inUpdate: true,
     }
 
     componentDidMount() {
@@ -29,8 +33,6 @@ class Update extends Component {
         })
     }
 
-
-
     getReservation = () => {
         console.log('we working in dashboard');
         this.props.dispatch({
@@ -38,7 +40,6 @@ class Update extends Component {
             payload: this.props.reduxState.user.id
         })
     }
-
 
     handleNewPrice = () => {
         let date1 = moment(this.state.startDate);
@@ -54,6 +55,17 @@ class Update extends Component {
             reservation_id: this.props.match.params.id
 
         })
+        this.handlePaymentToggle(updated_price);
+    }
+
+    handlePaymentToggle = (newPrice) => {
+        let originalPrice = this.props.reduxState.reserById.total_price
+        if (newPrice > originalPrice) {
+            console.log('newPrice is higher', newPrice);
+            this.setState({
+                priceDifference: newPrice - originalPrice
+            })
+        }
     }
 
     handleDateChangeFor = dateSelections => (event) => {
@@ -81,7 +93,6 @@ class Update extends Component {
         this.setState({
             [dateSelections]: event.target.value
         })
-
     }
 
     render() {
@@ -164,7 +175,16 @@ class Update extends Component {
                     </table>
 
                 </div>
-
+                <Popup trigger={<button>Update</button>} modal>
+                    <Payment
+                        update={this.state.inUpdate}
+                        reservation_id={this.props.reduxState.reserById.id}
+                        pick_up_date={this.state.startDate}
+                        drop_off_date={this.state.returnDate}
+                        updated_price={this.state.updated_price}
+                        priceDifference={this.state.priceDifference}
+                    />
+                </Popup>
             </>
         )
     }
