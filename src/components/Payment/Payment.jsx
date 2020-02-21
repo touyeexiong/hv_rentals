@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import React, {Component} from 'react';
-import {PayPalButton} from 'react-paypal-button-v2';
-// import Moment from 'react-moment';
-import moment from 'moment'
+import { PayPalButton } from "react-paypal-button-v2";
+import moment from 'moment'// import Moment from 'react-moment';
+
 
 class Payment extends Component {
 
@@ -11,40 +11,83 @@ class Payment extends Component {
         drop_off_date: "",
         rv_id: 0,
         user_id: 0,
+        price: 0,
+        priceToCharge: 0,
     }
     componentDidMount() {
         // this.getDays();
         // this.infoToSend()
         this.getInfo();
+        this.handlePaymentPrice();
     }
+    
     getInfo = () => {
-        let date1 = moment(this.props.match.params.start);
-        let date2 = moment(this.props.match.params.return);
-        let daysOfRental = date2.diff(date1, 'days')
-        console.log(daysOfRental);
-        let costOfRental = daysOfRental * 100;
-        console.log(costOfRental);
-        this.setState({
-            pick_up_date: moment(this.props.match.params.start).format("LL"),
-            drop_off_date: moment(this.props.match.params.return).format("LL"),
-            rv_id: this.props.match.params.id,
-            user_id: this.props.reduxState.user.id,
-            total_price: costOfRental
-        })
+
+        if (this.props.update === true){
+            console.log('we updating now', this.props);
+            return this.setState({
+                pick_up_date: this.props.pick_up_date,
+                drop_off_date: this.props.drop_off_date,
+                reservation_id: this.props.reservation_id,
+                price: this.props.updated_price,
+                priceToCharge: this.props.priceDifference
+
+            })
+            
+        } else{
+            let date1 = moment(this.props.match.params.start);
+            let date2 = moment(this.props.match.params.return);
+            let daysOfRental = date2.diff(date1, 'days')
+            console.log(daysOfRental);
+            let costOfRental = daysOfRental * 100;
+            console.log(costOfRental);
+           return this.setState({
+                pick_up_date: moment(this.props.match.params.start).format("LL"),
+                drop_off_date: moment(this.props.match.params.return).format("LL"),
+                rv_id: this.props.match.params.id,
+                user_id: this.props.reduxState.user.id,
+                price: costOfRental,
+                priceToCharge: costOfRental
+            })
+            ;
+            
+        }
+
+    }
+
+    handlePaymentPrice = () => {
+        if(this.props.update === true) {
+            return this.state.priceToCharge;
+        }
+        else {
+            return this.state.priceToCharge
+        }
     }
 
     infoToSend = () => {
-
-        console.log(this.state);
-        this.props.dispatch({
-            type: 'POST_RESERVATION',
-            payload: this.state,
-        })
-        this.props.history.push('/confirmation');
+        if(this.props.update === true) {
+            this.props.dispatch({
+                type: 'UPDATE_RESERVATION',
+                payload: this.state
+            })
+            window.location.reload();
+        }
+        else {
+            this.props.dispatch({
+                type: 'POST_RESERVATION',
+                payload: this.state,
+            })
+            this.props.history.push('/confirmation');
+        }
 }
+
+
     
-    render () {
+    render () {        
         console.log(this.state);
+        
+        console.log(this.state.priceToCharge);
+        
         
         return (
             <>
@@ -53,27 +96,14 @@ class Payment extends Component {
             <div>
                 <h1>Reservation Details</h1>
             </div>
-            <PayPalButton 
-            amount = {this.state.total_price}
-            onSuccess={this.infoToSend
-                
-                // (details, data) => {
-            //     alert("Transaction completed by " + details.payer.name.given_name);
-            // return fetch("/paypal-transaction-complete", {
-            //     method: "post",
-            //     body: JSON.stringify({
-            //         orderID: data.orderID
-            //     })
-                
-            // })
 
-            // }
-        }
+                <PayPalButton
+                    amount= {this.state.priceToCharge}
+                    onSuccess={this.infoToSend}
                     options={{
-                        clientId: "AVARjokO8VkezyxtptyBQ6v4cUqQ9_WjGriD21T-fn1BwDrcDaq9tDsTHGAoA1BCbfPnI2exJBoZe7Z-"
+                        clientId: "AXCASsmgV6MsT_nDnj_QgM-9WWhmTwnqtKeApa8-TjXqfCkGl5u3ObxIL_rLkhNeeJcv-k0DAHeaCVZn"
                     }}
-            
-            />
+                />
             
             </>
         )
