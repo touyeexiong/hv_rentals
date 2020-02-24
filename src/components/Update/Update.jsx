@@ -103,57 +103,57 @@ class Update extends Component {
                 <div>
                     <TableContainer>
                         <Table>
-                        <TableHead>
-                            <TableRow>
+                            <TableHead>
+                                <TableRow>
                                     <TableCell>YOUR RESERVATION ID</TableCell>
                                     <TableCell>RV</TableCell>
                                     <TableCell>RV DESCRIPTION</TableCell>
                                     <TableCell>PICK UP DATE</TableCell>
                                     <TableCell>RETURN DATE</TableCell>
                                     <TableCell>TOTAL PRICE</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
 
-                            <TableRow>
+                                <TableRow>
                                     <TableCell>{this.props.reduxState.reserById.id}</TableCell>
                                     <TableCell>{this.props.reduxState.reserById.rv_name}</TableCell>
                                     <TableCell>{this.props.reduxState.reserById.rv_description}</TableCell>
                                     <TableCell>{moment(this.props.reduxState.reserById.pick_up_date).format("LL")}</TableCell>
                                     <TableCell>{moment(this.props.reduxState.reserById.drop_off_date).format("LL")}</TableCell>
                                     <TableCell>$ {this.props.reduxState.reserById.total_price}</TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <td>
-                                    NEW PICK UP DATE
+                                </TableRow>
+                                <TableRow>
+                                    <td>
+                                        NEW PICK UP DATE
                                 <input
-                                        type='date'
-                                        name="startDate"
-                                        value={this.state.startDate}
-                                        onChange={this.handleDateChangeFor('startDate')} /></td>
-                                <td>
-                                    NEW RETURN DATE
+                                            type='date'
+                                            name="startDate"
+                                            value={this.state.startDate}
+                                            onChange={this.handleDateChangeFor('startDate')} /></td>
+                                    <td>
+                                        NEW RETURN DATE
                                 <input
-                                        type='date'
-                                        name="returnDate"
-                                        value={this.state.returnDate}
-                                        onChange={this.handleDateChangeFor('returnDate')} /></td>
-                                 </TableRow>
-                                 <TableRow>       
-                                <td>$ {this.state.updated_price || 0}</td>
-                                <button onClick={this.handleNewPrice}>CLICK TO CHECK PRICES</button>
-                                <Popup trigger={<button>Update</button>} modal>
-                                    <Payment
-                                        update={this.state.inUpdate}
-                                        reservation_id={this.props.reduxState.reserById.id}
-                                        pick_up_date={this.state.startDate}
-                                        drop_off_date={this.state.returnDate}
-                                        updated_price={this.state.updated_price}
-                                        priceDifference={this.state.priceDifference}
-                                    />
-                                </Popup>
-                            </TableRow>
-                        </TableBody>
+                                            type='date'
+                                            name="returnDate"
+                                            value={this.state.returnDate}
+                                            onChange={this.handleDateChangeFor('returnDate')} /></td>
+                                </TableRow>
+                                <TableRow>
+                                    <td>$ {this.state.updated_price || 0}</td>
+                                    <button onClick={this.handleNewPrice}>CLICK TO CHECK PRICES</button>
+                                    <Popup trigger={<button>Update</button>} modal>
+                                        <Payment
+                                            update={this.state.inUpdate}
+                                            reservation_id={this.props.reduxState.reserById.id}
+                                            pick_up_date={this.state.startDate}
+                                            drop_off_date={this.state.returnDate}
+                                            updated_price={this.state.updated_price}
+                                            priceDifference={this.state.priceDifference}
+                                        />
+                                    </Popup>
+                                </TableRow>
+                            </TableBody>
                         </Table>
                     </TableContainer>
                     <h1>ALREADY RESERVED DATES</h1>

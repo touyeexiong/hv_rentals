@@ -85,43 +85,43 @@ class Reservation extends Component {
             <>
                 <Grid className="grid" container spacing={3}>
 
-                            <Grid item xs={12} sm={6}>
-                                <Paper>
-                                <div>
+                    <Grid item xs={12} sm={6}>
+                        <Paper>
+                            <div>
 
-                                    {this.props.reduxState.rvs.map((rvSelected) => {
+                                {this.props.reduxState.rvs.map((rvSelected) => {
 
-                                        if (rvSelected.id === Number(this.props.match.params.id)) {
-                                            return (
-                                                <>
-                                                    <span key={rvSelected.id}>
-                                                        <img className="photo" alt={rvSelected.rv_description} src={rvSelected.rv_image_path} />
-                                                        <div>                                        {rvSelected.rv_description}
-                                                        </div>
-                                                    </span>
+                                    if (rvSelected.id === Number(this.props.match.params.id)) {
+                                        return (
+                                            <>
+                                                <span key={rvSelected.id}>
+                                                    <img className="photo" alt={rvSelected.rv_description} src={rvSelected.rv_image_path} />
+                                                    <div>                                        {rvSelected.rv_description}
+                                                    </div>
+                                                </span>
 
 
-                                                </>
-                                            )
+                                            </>
+                                        )
 
-                                        } else {
-                                            return (
-                                                <>
-                                                    {/* <span key={rvSelected.id}>
+                                    } else {
+                                        return (
+                                            <>
+                                                {/* <span key={rvSelected.id}>
                         </span> */}
-                                                </>)
+                                            </>)
 
 
-                                        }
-                                    })}
+                                    }
+                                })}
 
-                                </div>
-                                </Paper>
-                            </Grid>
+                            </div>
+                        </Paper>
+                    </Grid>
 
                     <Grid item xs={12} sm={6}>
                         <Paper>
-                                    <h3>RESERVE YOUR DATES</h3>
+                            <h3>RESERVE YOUR DATES</h3>
                             <div>
                                 PICK UP DATE
                         <input
@@ -138,29 +138,29 @@ class Reservation extends Component {
                                 <span><button onClick={this.handleBooking}>Continue to Booking</button></span>
 
                             </div>
-                        <h3>Reserved Dates</h3>
-                        <TableContainer component={Paper}>
-                            <Table >
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>PICK UP DATE</TableCell>
-                                        <TableCell>DROP OFF DATE</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {this.props.reduxState.reservationByRv.map((rv) => {
-                                        return (
-                                            <TableRow key={rv.id}>
-                                                <TableCell>{moment(rv.pick_up_date).format("LL")}</TableCell>
-                                                <TableCell>{moment(rv.drop_off_date).format("LL")}</TableCell>
-                                            </TableRow>
+                            <h3>Reserved Dates</h3>
+                            <TableContainer component={Paper}>
+                                <Table >
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>PICK UP DATE</TableCell>
+                                            <TableCell>DROP OFF DATE</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {this.props.reduxState.reservationByRv.map((rv) => {
+                                            return (
+                                                <TableRow key={rv.id}>
+                                                    <TableCell>{moment(rv.pick_up_date).format("LL")}</TableCell>
+                                                    <TableCell>{moment(rv.drop_off_date).format("LL")}</TableCell>
+                                                </TableRow>
 
-                                        )
-                                    })}
+                                            )
+                                        })}
 
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
                         </Paper>
                     </Grid>
                 </Grid>

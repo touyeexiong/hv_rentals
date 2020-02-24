@@ -6,9 +6,9 @@ class DashNav extends Component {
     render() {
         return (
             <>
-            <Link to="/dashboard">
+            {/* <Link to="/dashboard">
                 <h2>My Reservations</h2>
-            </Link>
+            </Link> */}
             {/* <Link to="/profile">
                 <h2>Profile</h2>
             </Link> */}

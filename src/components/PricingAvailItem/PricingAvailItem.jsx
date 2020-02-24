@@ -26,24 +26,24 @@ class PricingAvailItem extends Component {
         // })
         this.props.history.push(`/reservation/${this.props.id}`)
         console.log(this.props.history);
-        
+
     }
 
     render() {
-        
+
         return (
             <>
-            <Grid container spacing={3}
-            >
+                <Grid container spacing={3}
+                >
                     <Grid item xs={12} sm={6}>
-                <Paper>
-                <div><img className="photo" alt={this.props.des} src={this.props.imgPath} /></div>
-                <div className="testing">{this.props.name}</div>
-                <MyButton onClick={this.handleClick}>Check Availability and Pricing</MyButton>
-                    </Paper>
+                        <Paper>
+                            <div><img className="photo" alt={this.props.des} src={this.props.imgPath} /></div>
+                            <div className="testing">{this.props.name}</div>
+                            <MyButton onClick={this.handleClick}>Check Availability and Pricing</MyButton>
+                        </Paper>
+                    </Grid>
                 </Grid>
-                </Grid>
-            </> 
+            </>
         )
     }
 }

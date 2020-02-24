@@ -67,7 +67,7 @@ class MyReservation extends Component {
                     <TableCell>$ {this.props.price}</TableCell>
                     <TableCell><MyButton color="blue" onClick={this.handleUpdate}>UPDATE RESERVATION</MyButton></TableCell>
                     <TableCell><MyButton color="red" onClick={(e) => { if (window.confirm('Are you sure you wish to cancel this reservation?')) this.handleDelete(e) }}>CANCEL RESERVATION</MyButton></TableCell>
-                <Popover />
+                    <Popover />
                 </TableRow>
 
 

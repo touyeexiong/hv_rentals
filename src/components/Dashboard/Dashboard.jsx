@@ -12,7 +12,7 @@ import Paper from '@material-ui/core/Paper';
 
 class UserPage extends Component {
 
-  
+
 
   componentDidMount = () => {
     this.getReservation();
@@ -28,14 +28,14 @@ class UserPage extends Component {
   render() {
     return (
       <>
-      <DashNav />
+        <DashNav />
         <h1 id="welcome">
           Welcome, {this.props.user.username} !
       </h1>
-      <TableContainer component={Paper}>
-        <Table>
-        <TableHead>
-          <TableRow>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
                 <TableCell>RESERVATION ID</TableCell>
                 <TableCell>RV</TableCell>
                 <TableCell>RV DESCRIPTION</TableCell>
@@ -44,18 +44,18 @@ class UserPage extends Component {
                 <TableCell>TOTAL PRICE</TableCell>
                 <TableCell></TableCell>
                 <TableCell></TableCell>
-          </TableRow>
+              </TableRow>
             </TableHead>
-          <TableBody>
-            {this.props.getReser.map((reser) => {
-              return (
-                <MyReser key={reser.id} user_id={reser.user_id} rv={reser.rv_name} rvDes={reser.rv_description} id={reser.id} start={reser.pick_up_date} end={reser.drop_off_date} price={reser.total_price} rv_id={reser.rv_id} />
-              )
-            })}
-              </TableBody>
-        
+            <TableBody>
+              {this.props.getReser.map((reser) => {
+                return (
+                  <MyReser key={reser.id} user_id={reser.user_id} rv={reser.rv_name} rvDes={reser.rv_description} id={reser.id} start={reser.pick_up_date} end={reser.drop_off_date} price={reser.total_price} rv_id={reser.rv_id} />
+                )
+              })}
+            </TableBody>
+
           </Table>
-      </TableContainer>
+        </TableContainer>
         <ul>
 
         </ul>

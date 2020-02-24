@@ -86,41 +86,41 @@ class Payment extends Component {
     render() {
         return (
             <>
-            <Grid container spacing={3}>
-                <Grid item xs={12} sm={6}>
-                    <Paper >
-                <div>
-                    <h1>Reservation Details</h1>
-                </div>
-                <div>
-                    <ul key={this.props.reduxState.user.id}>
-                        <li>USERNAME: {this.props.reduxState.user.username}</li>
-                        <li>EMAIL: {this.props.reduxState.user.email_address}</li>
-                        <li>PICK UP DATE: {this.state.pick_up_date}</li>
-                        <li>DROP OFF DATE: {this.state.drop_off_date}</li>
-                        <li>PRICE: ${this.state.priceToCharge}</li>
-                    
-                    </ul>  
-                </div>
+                <Grid container spacing={3}>
+                    <Grid item xs={12} sm={6}>
+                        <Paper >
+                            <div>
+                                <h1>Reservation Details</h1>
+                            </div>
+                            <div>
+                                <ul key={this.props.reduxState.user.id}>
+                                    <li>USERNAME: {this.props.reduxState.user.username}</li>
+                                    <li>EMAIL: {this.props.reduxState.user.email_address}</li>
+                                    <li>PICK UP DATE: {this.state.pick_up_date}</li>
+                                    <li>DROP OFF DATE: {this.state.drop_off_date}</li>
+                                    <li>PRICE: ${this.state.priceToCharge}</li>
+
+                                </ul>
+                            </div>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Paper>
-                <div className="center">
-                    
-                    <h1>Payment Information</h1>
-                
+                            <div className="center">
 
-                <PayPalButton
-                    amount={this.state.priceToCharge}
-                    onSuccess={this.infoToSend}
-                    options={{
-                        clientId: "AXCASsmgV6MsT_nDnj_QgM-9WWhmTwnqtKeApa8-TjXqfCkGl5u3ObxIL_rLkhNeeJcv-k0DAHeaCVZn"
-                    }}
-                />
-                </div>
+                                <h1>Payment Information</h1>
+
+
+                                <PayPalButton
+                                    amount={this.state.priceToCharge}
+                                    onSuccess={this.infoToSend}
+                                    options={{
+                                        clientId: "AXCASsmgV6MsT_nDnj_QgM-9WWhmTwnqtKeApa8-TjXqfCkGl5u3ObxIL_rLkhNeeJcv-k0DAHeaCVZn"
+                                    }}
+                                />
+                            </div>
                         </Paper>
-</Grid>
+                    </Grid>
                 </Grid>
             </>
         )

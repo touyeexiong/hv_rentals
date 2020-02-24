@@ -1,19 +1,21 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import './Confirmation.css'
 
 class Confirmation extends Component {
 
     handleClick = () => {
         this.props.history.push('/dashboard')
-        
+
     }
 
-    render () {
+    render() {
         return (
-            <>
-            <h1>THANKS FOR BOOKING WITH HV RENTAL!</h1>
-            <p>We hope you enjoy your trip!!!</p>
-            <button onClick={this.handleClick}>Reservation Details</button>
+            <><div className="center">
+                <h1>THANKS FOR BOOKING WITH HV RENTAL!</h1>
+                <p>We hope you enjoy your trip!!!</p>
+                <button onClick={this.handleClick}>Click Here To View Your Reservation Details</button>
+            </div>
             </>
         )
     }
