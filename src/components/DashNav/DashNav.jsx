@@ -9,9 +9,9 @@ class DashNav extends Component {
             <Link to="/dashboard">
                 <h2>My Reservations</h2>
             </Link>
-            <Link to="/profile">
+            {/* <Link to="/profile">
                 <h2>Profile</h2>
-            </Link>
+            </Link> */}
             </>
         )
     }

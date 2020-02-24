@@ -6,39 +6,32 @@ import { red, blue, green } from '@material-ui/core/colors';
 import ImageGallery from 'react-image-gallery'
 import {useTheme } from '@material-ui/styles'
 import {ThemeProvider} from '@material-ui/styles'
-// import {createMuiTheme} from '@material-ui/styles'
+import {styled} from '@material-ui/styles'
 
-// const theme = createMuiTheme({
-//     palette: {
-//         primary: {
-//             light: '#757ce8',
-//             main: '#3f50b5',
-//             dark: '#002884',
-//             contrastText: '#fff',
-//         },
-//         secondary: {
-//             light: '#ff7961',
-//             main: '#f44336',
-//             dark: '#ba000d',
-//             contrastText: '#000',
-//         },
-//     },
-// });
+const MyButton = styled(Button)({
+    background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    color: 'white',
+    height: 48,
+    padding: '0 30px',
+});
+
 
 class Home extends Component {
     state = {
         open: true
     }
-
     render() {
+        
         return (
             <>
-            <ThemeProvider >
 
 
                 <h1>We at Home now</h1>
                 
-                <Button color="primary">Testing</Button>
+                <MyButton color="primary">Testing</MyButton>
                 <img alt="main rv" src="https://i.ebayimg.com/images/g/TaEAAOSwJj1cz67N/s-l1600.jpg" />
                 <AutoRotatingCarousel 
                 style={{ position: 'absolute' }}
@@ -57,7 +50,6 @@ class Home extends Component {
                     />
 
                 </AutoRotatingCarousel>
-            </ThemeProvider>
             </>
         )
     }
