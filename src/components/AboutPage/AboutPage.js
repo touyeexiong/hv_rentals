@@ -9,7 +9,7 @@ const AboutPage = () => (
   <div>
     <div>
       <p>
-        <img src="https://www.colorado.com/sites/default/files/styles/media-player-large/public/RVing4_StVrainSP_CSP.jpg?itok=1EiPZunc"/>
+        <img alt="rv by the lake" src="https://www.colorado.com/sites/default/files/styles/media-player-large/public/RVing4_StVrainSP_CSP.jpg?itok=1EiPZunc"/>
       </p>
       <div>
         <p>

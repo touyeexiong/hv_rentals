@@ -3,16 +3,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import moment from 'moment'
 import Button from '@material-ui/core/Button'
-import { styled } from '@material-ui/styles'
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import Popover from '@material-ui/core/Popover';
 
 const useStyles = makeStyles({
     root: {
@@ -71,8 +66,11 @@ class MyReservation extends Component {
                     <TableCell>{moment(this.props.end).format("LL")}</TableCell>
                     <TableCell>$ {this.props.price}</TableCell>
                     <TableCell><MyButton color="blue" onClick={this.handleUpdate}>UPDATE RESERVATION</MyButton></TableCell>
-                    <TableCell><MyButton color="red" onClick={this.handleDelete}>CANCEL RESERVATION</MyButton></TableCell>
+                    <TableCell><MyButton color="red" onClick={(e) => { if (window.confirm('Are you sure you wish to cancel this reservation?')) this.handleDelete(e) }}>CANCEL RESERVATION</MyButton></TableCell>
+                <Popover />
                 </TableRow>
+
+
             </>
         )
     }

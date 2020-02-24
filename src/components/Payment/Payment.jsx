@@ -2,8 +2,10 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { PayPalButton } from "react-paypal-button-v2";
 import moment from 'moment'// import Moment from 'react-moment';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import './Payment.css'
+
 
 class Payment extends Component {
 
@@ -84,12 +86,27 @@ class Payment extends Component {
     render() {
         return (
             <>
+            <Grid container spacing={3}>
+                <Grid item xs={12} sm={6}>
+                    <Paper >
                 <div>
                     <h1>Reservation Details</h1>
                 </div>
-                <Card>
-                    <CardContent>
                 <div>
+                    <ul key={this.props.reduxState.user.id}>
+                        <li>USERNAME: {this.props.reduxState.user.username}</li>
+                        <li>EMAIL: {this.props.reduxState.user.email_address}</li>
+                        <li>PICK UP DATE: {this.state.pick_up_date}</li>
+                        <li>DROP OFF DATE: {this.state.drop_off_date}</li>
+                        <li>PRICE: ${this.state.priceToCharge}</li>
+                    
+                    </ul>  
+                </div>
+                        </Paper>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Paper>
+                <div className="center">
                     
                     <h1>Payment Information</h1>
                 
@@ -102,8 +119,9 @@ class Payment extends Component {
                     }}
                 />
                 </div>
-                    </CardContent>
-                </Card>
+                        </Paper>
+</Grid>
+                </Grid>
             </>
         )
     }

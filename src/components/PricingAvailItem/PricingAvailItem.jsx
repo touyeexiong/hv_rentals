@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import { styled } from '@material-ui/styles'
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import './PricingAvailItem.css'
-import Box from '@material-ui/core/Box'
-
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
 const MyButton = styled(Button)({
     background: 'linear-gradient(45deg, #b5b8b1 30%, #1b1d18 90%)',
@@ -37,21 +33,16 @@ class PricingAvailItem extends Component {
         
         return (
             <>
-            <Box
-            display="flex"
-            flexWrap="wrap"
+            <Grid container spacing={3}
             >
-            <Card>
-                <CardContent className="root">
-                    <span>
+                    <Grid item xs={12} sm={6}>
+                <Paper>
                 <div><img className="photo" alt={this.props.des} src={this.props.imgPath} /></div>
                 <div className="testing">{this.props.name}</div>
-                <div>{this.props.des}</div>
                 <MyButton onClick={this.handleClick}>Check Availability and Pricing</MyButton>
-                        </span>
-                    </CardContent>
-                </Card>
-                </Box>
+                    </Paper>
+                </Grid>
+                </Grid>
             </> 
         )
     }

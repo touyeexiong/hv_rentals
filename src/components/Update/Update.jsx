@@ -4,6 +4,14 @@ import moment from 'moment';
 import Popup from 'reactjs-popup';
 import './Update.css'
 import Payment from '../Payment/Payment'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
 
 class Update extends Component {
     state = {
@@ -93,31 +101,29 @@ class Update extends Component {
             <>
                 <h1>UPDATE RESERVATION</h1>
                 <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>YOUR RESERVATION ID</td>
-                                <td>RV</td>
-                                <td>RV DESCRIPTION</td>
-                                <td>PICK UP DATE</td>
-                                <td>RETURN DATE</td>
-                                <td>TOTAL PRICE</td>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <TableContainer>
+                        <Table>
+                        <TableHead>
+                            <TableRow>
+                                    <TableCell>YOUR RESERVATION ID</TableCell>
+                                    <TableCell>RV</TableCell>
+                                    <TableCell>RV DESCRIPTION</TableCell>
+                                    <TableCell>PICK UP DATE</TableCell>
+                                    <TableCell>RETURN DATE</TableCell>
+                                    <TableCell>TOTAL PRICE</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
 
-                            <tr>
-                                <td>{this.props.reduxState.reserById.id}</td>
-                                <td>{this.props.reduxState.reserById.rv_name}</td>
-                                <td>{this.props.reduxState.reserById.rv_description}</td>
-                                <td>{moment(this.props.reduxState.reserById.pick_up_date).format("LL")}</td>
-                                <td>{moment(this.props.reduxState.reserById.drop_off_date).format("LL")}</td>
-                                <td>$ {this.props.reduxState.reserById.total_price}</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                            <TableRow>
+                                    <TableCell>{this.props.reduxState.reserById.id}</TableCell>
+                                    <TableCell>{this.props.reduxState.reserById.rv_name}</TableCell>
+                                    <TableCell>{this.props.reduxState.reserById.rv_description}</TableCell>
+                                    <TableCell>{moment(this.props.reduxState.reserById.pick_up_date).format("LL")}</TableCell>
+                                    <TableCell>{moment(this.props.reduxState.reserById.drop_off_date).format("LL")}</TableCell>
+                                    <TableCell>$ {this.props.reduxState.reserById.total_price}</TableCell>
+                            </TableRow>
+                            <TableRow>
                                 <td>
                                     NEW PICK UP DATE
                                 <input
@@ -132,12 +138,24 @@ class Update extends Component {
                                         name="returnDate"
                                         value={this.state.returnDate}
                                         onChange={this.handleDateChangeFor('returnDate')} /></td>
+                                 </TableRow>
+                                 <TableRow>       
                                 <td>$ {this.state.updated_price || 0}</td>
-                                <td><button onClick={this.handleNewPrice}>CLICK TO CHECK PRICES</button></td>
-                                <td><button onClick={this.handleUpdate}>UPDATE</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                <button onClick={this.handleNewPrice}>CLICK TO CHECK PRICES</button>
+                                <Popup trigger={<button>Update</button>} modal>
+                                    <Payment
+                                        update={this.state.inUpdate}
+                                        reservation_id={this.props.reduxState.reserById.id}
+                                        pick_up_date={this.state.startDate}
+                                        drop_off_date={this.state.returnDate}
+                                        updated_price={this.state.updated_price}
+                                        priceDifference={this.state.priceDifference}
+                                    />
+                                </Popup>
+                            </TableRow>
+                        </TableBody>
+                        </Table>
+                    </TableContainer>
                     <h1>ALREADY RESERVED DATES</h1>
                     <table>
                         <thead>
@@ -150,7 +168,6 @@ class Update extends Component {
                             {this.props.reduxState.reservationByRv.map((rv) => {
                                 return (
                                     <tr key={rv.id}>
-                                        <td></td>
                                         <td>{moment(rv.pick_up_date).format("LL")}</td>
                                         <td>{moment(rv.drop_off_date).format("LL")}</td>
                                     </tr>
@@ -162,16 +179,7 @@ class Update extends Component {
                     </table>
 
                 </div>
-                <Popup trigger={<button>Update</button>} modal>
-                    <Payment
-                        update={this.state.inUpdate}
-                        reservation_id={this.props.reduxState.reserById.id}
-                        pick_up_date={this.state.startDate}
-                        drop_off_date={this.state.returnDate}
-                        updated_price={this.state.updated_price}
-                        priceDifference={this.state.priceDifference}
-                    />
-                </Popup>
+
             </>
         )
     }

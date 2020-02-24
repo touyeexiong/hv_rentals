@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -10,8 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import './Reservation.css'
 
 
 class Reservation extends Component {
@@ -85,91 +83,89 @@ class Reservation extends Component {
         // this.handleEndDateCheck();
         return (
             <>
+                <Grid className="grid" container spacing={3}>
 
-                
-                <h1>we in reservations now</h1>
-                
-                <Grid container spacing={3}>
-                    <Card>
-                        <CardContent>
-                    <Grid item xs={6}>
-                            
-                <div>
-                                
-                    {this.props.reduxState.rvs.map((rvSelected) => {
+                            <Grid item xs={12} sm={6}>
+                                <Paper>
+                                <div>
 
-                        if (rvSelected.id === Number(this.props.match.params.id)) {
-                            return (
-                                <>
-                                    <span key={rvSelected.id}>
-                                        <img alt={rvSelected.rv_description} src={rvSelected.rv_image_path} />
-                                        {rvSelected.rv_description}
-                                    </span>
-                                    <div>
-                                        PICK UP DATE
-                        <input
-                                            type='date'
-                                            name="startDate"
-                                            value={this.state.startDate}
-                                            onChange={this.handleDateChangeFor('startDate')} />
-                                        RETURN DATE
-                        <input
-                                            type='date'
-                                            name="returnDate"
-                                            value={this.state.returnDate}
-                                            onChange={this.handleDateChangeFor('returnDate')} />
-                                        <span><button onClick={this.handleBooking}>Continue to Booking</button></span>
+                                    {this.props.reduxState.rvs.map((rvSelected) => {
 
-                                    </div>
-                                    
-                                </>
-                            )
+                                        if (rvSelected.id === Number(this.props.match.params.id)) {
+                                            return (
+                                                <>
+                                                    <span key={rvSelected.id}>
+                                                        <img className="photo" alt={rvSelected.rv_description} src={rvSelected.rv_image_path} />
+                                                        <div>                                        {rvSelected.rv_description}
+                                                        </div>
+                                                    </span>
 
-                        } else {
-                            return (
-                                <>
-                                    {/* <span key={rvSelected.id}>
+
+                                                </>
+                                            )
+
+                                        } else {
+                                            return (
+                                                <>
+                                                    {/* <span key={rvSelected.id}>
                         </span> */}
-                                </>)
+                                                </>)
 
 
-                        }
-                    })}
-                    
-                </div>
-                    </Grid>
-                        </CardContent>
-                    </Card>
-                                    
+                                        }
+                                    })}
 
-                    <Grid item xs={6}>
-                    <h3>Reserved Dates</h3>
-                <TableContainer component={Paper}>
-                    <Table >
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>PICK UP DATE</TableCell>
-                                <TableCell>DROP OFF DATE</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {this.props.reduxState.reservationByRv.map((rv) => {
-                                return (
-                                    <TableRow key={rv.id}>
-                                        <TableCell>{moment(rv.pick_up_date).format("LL")}</TableCell>
-                                        <TableCell>{moment(rv.drop_off_date).format("LL")}</TableCell>
+                                </div>
+                                </Paper>
+                            </Grid>
+
+                    <Grid item xs={12} sm={6}>
+                        <Paper>
+                                    <h3>RESERVE YOUR DATES</h3>
+                            <div>
+                                PICK UP DATE
+                        <input
+                                    type='date'
+                                    name="startDate"
+                                    value={this.state.startDate}
+                                    onChange={this.handleDateChangeFor('startDate')} />
+                                RETURN DATE
+                        <input
+                                    type='date'
+                                    name="returnDate"
+                                    value={this.state.returnDate}
+                                    onChange={this.handleDateChangeFor('returnDate')} />
+                                <span><button onClick={this.handleBooking}>Continue to Booking</button></span>
+
+                            </div>
+                        <h3>Reserved Dates</h3>
+                        <TableContainer component={Paper}>
+                            <Table >
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>PICK UP DATE</TableCell>
+                                        <TableCell>DROP OFF DATE</TableCell>
                                     </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {this.props.reduxState.reservationByRv.map((rv) => {
+                                        return (
+                                            <TableRow key={rv.id}>
+                                                <TableCell>{moment(rv.pick_up_date).format("LL")}</TableCell>
+                                                <TableCell>{moment(rv.drop_off_date).format("LL")}</TableCell>
+                                            </TableRow>
 
-                                )
-                            })}
+                                        )
+                                    })}
 
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                        </Paper>
                     </Grid>
                 </Grid>
-                    
-                
+
+
             </>
 
         )
