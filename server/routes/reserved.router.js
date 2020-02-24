@@ -26,7 +26,7 @@ router.post('/reserved', (req, res) => {
     const drop_off_date = req.body.drop_off_date;
     const rv_id = req.body.rv_id;
     const user_id = req.body.user_id;
-    const total_price = req.body.total_price;
+    const total_price = req.body.price;
 
     const queryText =
         `INSERT INTO "reservation"
