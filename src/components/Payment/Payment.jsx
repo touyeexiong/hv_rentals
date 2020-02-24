@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { PayPalButton } from "react-paypal-button-v2";
 import moment from 'moment'// import Moment from 'react-moment';
-
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 class Payment extends Component {
 
-    state={
+    state = {
         pick_up_date: "",
         drop_off_date: "",
         rv_id: 0,
@@ -20,10 +21,10 @@ class Payment extends Component {
         this.getInfo();
         this.handlePaymentPrice();
     }
-    
+
     getInfo = () => {
 
-        if (this.props.update === true){
+        if (this.props.update === true) {
             return this.setState({
                 pick_up_date: this.props.pick_up_date,
                 drop_off_date: this.props.drop_off_date,
@@ -32,13 +33,13 @@ class Payment extends Component {
                 priceToCharge: this.props.priceDifference
 
             })
-            
-        } else{
+
+        } else {
             let date1 = moment(this.props.match.params.start);
             let date2 = moment(this.props.match.params.return);
             let daysOfRental = date2.diff(date1, 'days')
             let costOfRental = daysOfRental * 100;
-           return this.setState({
+            return this.setState({
                 pick_up_date: moment(this.props.match.params.start).format("LL"),
                 drop_off_date: moment(this.props.match.params.return).format("LL"),
                 rv_id: this.props.match.params.id,
@@ -46,14 +47,14 @@ class Payment extends Component {
                 price: costOfRental,
                 priceToCharge: costOfRental
             })
-            ;
-            
+                ;
+
         }
 
     }
 
     handlePaymentPrice = () => {
-        if(this.props.update === true) {
+        if (this.props.update === true) {
             return this.state.priceToCharge;
         }
         else {
@@ -62,7 +63,7 @@ class Payment extends Component {
     }
 
     infoToSend = () => {
-        if(this.props.update === true) {
+        if (this.props.update === true) {
             this.props.dispatch({
                 type: 'UPDATE_RESERVATION',
                 payload: this.state
@@ -76,27 +77,33 @@ class Payment extends Component {
             })
             this.props.history.push('/confirmation');
         }
-}
+    }
 
 
-    
-    render () {        
+
+    render() {
         return (
             <>
-            <div><h1>Payment Information</h1>
-            </div>
-            <div>
-                <h1>Reservation Details</h1>
-            </div>
+                <div>
+                    <h1>Reservation Details</h1>
+                </div>
+                <Card>
+                    <CardContent>
+                <div>
+                    
+                    <h1>Payment Information</h1>
+                
 
                 <PayPalButton
-                    amount= {this.state.priceToCharge}
+                    amount={this.state.priceToCharge}
                     onSuccess={this.infoToSend}
                     options={{
                         clientId: "AXCASsmgV6MsT_nDnj_QgM-9WWhmTwnqtKeApa8-TjXqfCkGl5u3ObxIL_rLkhNeeJcv-k0DAHeaCVZn"
                     }}
                 />
-            
+                </div>
+                    </CardContent>
+                </Card>
             </>
         )
     }

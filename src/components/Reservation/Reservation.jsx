@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-// import ReservedDates from '../ReservedDates/ReservedDates'
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+
 
 class Reservation extends Component {
 
@@ -25,7 +36,7 @@ class Reservation extends Component {
     handleDateChangeFor = dateSelections => (event) => {
         let rv = this.props.reduxState.reservationByRv;
         console.log(rv.length);
-        
+
 
         for (let i = 0; i < rv.length; i++) {
             let dateToCheck = moment(rv[i].pick_up_date).format("LL");
@@ -38,12 +49,12 @@ class Reservation extends Component {
                 })
                 return false;
             }
-            
+
         }
-            this.setState({
-                [dateSelections]: event.target.value
-            })
-        
+        this.setState({
+            [dateSelections]: event.target.value
+        })
+
     }
 
     handleReservation = () => {
@@ -69,13 +80,22 @@ class Reservation extends Component {
 
     render() {
         console.log(this.state);
-        
+
         // this.handleStartDateCheck();
         // this.handleEndDateCheck();
         return (
             <>
+
+                
                 <h1>we in reservations now</h1>
+                
+                <Grid container spacing={3}>
+                    <Card>
+                        <CardContent>
+                    <Grid item xs={6}>
+                            
                 <div>
+                                
                     {this.props.reduxState.rvs.map((rvSelected) => {
 
                         if (rvSelected.id === Number(this.props.match.params.id)) {
@@ -101,6 +121,7 @@ class Reservation extends Component {
                                         <span><button onClick={this.handleBooking}>Continue to Booking</button></span>
 
                                     </div>
+                                    
                                 </>
                             )
 
@@ -114,32 +135,41 @@ class Reservation extends Component {
 
                         }
                     })}
+                    
                 </div>
+                    </Grid>
+                        </CardContent>
+                    </Card>
+                                    
 
-                <table>
-                    <thead>
-                        <tr>
-                            <td>DATES ALREADY RESERVED</td>
-                            <td>PICK UP DATE</td>
-                            <td>DROP OFF DATE</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.reduxState.reservationByRv.map((rv) => {
-                            return (
-                                <tr key={rv.id}>
-                                    <td></td>
-                                    <td>{moment(rv.pick_up_date).format("LL")}</td>
-                                    <td>{moment(rv.drop_off_date).format("LL")}</td>
-                                </tr>
+                    <Grid item xs={6}>
+                    <h3>Reserved Dates</h3>
+                <TableContainer component={Paper}>
+                    <Table >
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>PICK UP DATE</TableCell>
+                                <TableCell>DROP OFF DATE</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {this.props.reduxState.reservationByRv.map((rv) => {
+                                return (
+                                    <TableRow key={rv.id}>
+                                        <TableCell>{moment(rv.pick_up_date).format("LL")}</TableCell>
+                                        <TableCell>{moment(rv.drop_off_date).format("LL")}</TableCell>
+                                    </TableRow>
 
-                            )
-                        })}
+                                )
+                            })}
 
-                    </tbody>
-                </table>
-
-
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                    </Grid>
+                </Grid>
+                    
+                
             </>
 
         )

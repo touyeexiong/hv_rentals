@@ -4,13 +4,17 @@ import Button from '@material-ui/core/Button'
 import { styled } from '@material-ui/styles'
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import './PricingAvailItem.css'
+import Box from '@material-ui/core/Box'
 
 
 const MyButton = styled(Button)({
-    background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+    background: 'linear-gradient(45deg, #b5b8b1 30%, #1b1d18 90%)',
     border: 0,
     borderRadius: 3,
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    boxShadow: '0 3px 5px 2px #5a5c56',
     color: 'white',
     height: 48,
     padding: '0 30px',
@@ -30,13 +34,24 @@ class PricingAvailItem extends Component {
     }
 
     render() {
+        
         return (
             <>
-                <div><img alt={this.props.des} src={this.props.imgPath} /></div>
-                <div>{this.props.name}</div>
+            <Box
+            display="flex"
+            flexWrap="wrap"
+            >
+            <Card>
+                <CardContent className="root">
+                    <span>
+                <div><img className="photo" alt={this.props.des} src={this.props.imgPath} /></div>
+                <div className="testing">{this.props.name}</div>
                 <div>{this.props.des}</div>
                 <MyButton onClick={this.handleClick}>Check Availability and Pricing</MyButton>
-            {/* <Reservation id={this.props.id} /> */}
+                        </span>
+                    </CardContent>
+                </Card>
+                </Box>
             </> 
         )
     }
