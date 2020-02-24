@@ -18,7 +18,7 @@ class PricingAvail extends Component {
                
         return (
             <>
-            <h1>we in Pricing and Availability</h1>
+            <h1>Pricing and Availability</h1>
             
             {this.props.reduxState.rvs.map((rvs) => {
                 return (
