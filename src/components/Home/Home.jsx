@@ -1,50 +1,25 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button'
 import { AutoRotatingCarousel } from 'material-auto-rotating-carousel';
-import { Slide } from 'material-auto-rotating-carousel';
-import { red, blue, green } from '@material-ui/core/colors';
-import ImageGallery from 'react-image-gallery'
-import {useTheme } from '@material-ui/styles'
-import {ThemeProvider} from '@material-ui/styles'
-// import {createMuiTheme} from '@material-ui/styles'
-
-// const theme = createMuiTheme({
-//     palette: {
-//         primary: {
-//             light: '#757ce8',
-//             main: '#3f50b5',
-//             dark: '#002884',
-//             contrastText: '#fff',
-//         },
-//         secondary: {
-//             light: '#ff7961',
-//             main: '#f44336',
-//             dark: '#ba000d',
-//             contrastText: '#000',
-//         },
-//     },
-// });
+// import { Slide } from 'material-auto-rotating-carousel';
+import { red } from '@material-ui/core/colors';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import './Home.css';
 
 class Home extends Component {
     state = {
         open: true
     }
-
     render() {
+
         return (
             <>
-            <ThemeProvider >
-
-
-                <h1>We at Home now</h1>
-                
-                <Button color="primary">Testing</Button>
-                <img alt="main rv" src="https://i.ebayimg.com/images/g/TaEAAOSwJj1cz67N/s-l1600.jpg" />
-                <AutoRotatingCarousel 
-                style={{ position: 'absolute' }}
-                open={this.state.open}
-                onStart={() => this.setState({ open: false })}
-                onClose={() => this.setState({ open: false })}
+                {/* <img alt="main rv" src="https://i.ebayimg.com/images/g/TaEAAOSwJj1cz67N/s-l1600.jpg" /> */}
+                {/* <AutoRotatingCarousel
+                    style={{ position: 'absolute' }}
+                    open={this.state.open}
+                    onStart={() => this.setState({ open: false })}
+                    onClose={() => this.setState({ open: false })}
                 >
                     <Slide
                         media={<img alt="main rv" src="https://i.ebayimg.com/images/g/TaEAAOSwJj1cz67N/s-l1600.jpg" />}
@@ -53,11 +28,28 @@ class Home extends Component {
                         subtitle="we just testing"
                     />
                     <Slide
-                        media={<img alt="main rv" src="https://i.ebayimg.com/images/g/TaEAAOSwJj1cz67N/s-l1600.jpg" />}
+                        media={<img alt="main rv" src="https://i.ebayimg.com/images/g/KdQAAOSwSv9cz67P/s-l1600.jpg" />}
                     />
 
-                </AutoRotatingCarousel>
-            </ThemeProvider>
+                </AutoRotatingCarousel> */}
+
+                <CarouselProvider
+                    naturalSlideWidth={100}
+                    naturalSlideHeight={50}
+                    totalSlides={3}
+                    className="div"
+                    isPlaying="true"
+                >
+
+                    <Slider>
+                        <Slide index={0}><img alt="main rv" src="https://i.ebayimg.com/images/g/TaEAAOSwJj1cz67N/s-l1600.jpg" /></Slide>
+                        <Slide index={1}><img alt="main rv" src="https://i.ebayimg.com/images/g/KdQAAOSwSv9cz67P/s-l1600.jpg" /></Slide>
+                        <Slide index={2}><img alt="main rv" src="https://www.ridecdn.com/www.freedomrvaz.com/uploads/Forester.png" /></Slide>
+                    </Slider>
+                    <ButtonBack>Back</ButtonBack>
+                    <ButtonNext>Next</ButtonNext>
+                </CarouselProvider>
+            
             </>
         )
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import './AboutPage.css';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -6,10 +7,10 @@ import React from 'react';
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 const AboutPage = () => (
-  <div>
+  <div className="center">
     <div>
       <p>
-        <img src="https://www.colorado.com/sites/default/files/styles/media-player-large/public/RVing4_StVrainSP_CSP.jpg?itok=1EiPZunc"/>
+        <img alt="rv by the lake" src="https://www.colorado.com/sites/default/files/styles/media-player-large/public/RVing4_StVrainSP_CSP.jpg?itok=1EiPZunc"/>
       </p>
       <div>
         <p>

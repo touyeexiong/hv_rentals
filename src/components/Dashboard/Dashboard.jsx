@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import MyReser from '../MyReservation/MyReservation';
 import DashNav from '../DashNav/DashNav'
-
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 class UserPage extends Component {
+
+
 
   componentDidMount = () => {
     this.getReservation();
@@ -21,32 +28,36 @@ class UserPage extends Component {
   render() {
     return (
       <>
-      <DashNav />
+        <DashNav />
         <h1 id="welcome">
           Welcome, {this.props.user.username} !
       </h1>
-      <table>
-        <thead>
-          <tr>
-            <td>RESERVATION ID</td>
-            <td>RV</td>
-            <td>RV DESCRIPTION</td>
-            <td>PICK UP DATE</td>
-            <td>RETURN DATE</td>
-            <td>TOTAL PRICE</td>
-            <td></td>
-    <td></td>
-          </tr>
-            {this.props.getReser.map((reser) => {
-              return (
-                <MyReser key={reser.id} user_id={reser.user_id} rv={reser.rv_name} rvDes={reser.rv_description} id={reser.id} start={reser.pick_up_date} end={reser.drop_off_date} price={reser.total_price} rv_id={reser.rv_id} />
-              )
-            })}
-        </thead>
-      </table>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>RESERVATION ID</TableCell>
+                <TableCell>RV</TableCell>
+                <TableCell>RV DESCRIPTION</TableCell>
+                <TableCell>PICK UP DATE</TableCell>
+                <TableCell>RETURN DATE</TableCell>
+                <TableCell>TOTAL PRICE</TableCell>
+                <TableCell></TableCell>
+                <TableCell></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {this.props.getReser.map((reser) => {
+                return (
+                  <MyReser key={reser.id} user_id={reser.user_id} rv={reser.rv_name} rvDes={reser.rv_description} id={reser.id} start={reser.pick_up_date} end={reser.drop_off_date} price={reser.total_price} rv_id={reser.rv_id} />
+                )
+              })}
+            </TableBody>
+
+          </Table>
+        </TableContainer>
         <ul>
-          {/* {JSON.stringify(this.props.getReser[3].pick_up_date)} */}
-          {/* {JSON.stringify(this.props.getReser)} */}
+
         </ul>
 
       </>
@@ -54,9 +65,7 @@ class UserPage extends Component {
   }
 }
 
-// Instead of taking everything from state, we just want the user info.
-// if you wanted you could write this code like this:
-// const mapStateToProps = ({user}) => ({ user });
+
 const mapStateToProps = state => ({
   user: state.user,
   getReser: state.getReser,
