@@ -67,6 +67,8 @@ class Update extends Component {
             this.setState({
                 priceDifference: newPrice - originalPrice
             })
+        } else {
+            
         }
     }
 
