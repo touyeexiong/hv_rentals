@@ -9,7 +9,7 @@
     "@material-ui/styles": "^4.9.0",
     "@material/textfield": "^5.0.0",
     "antd": "^3.26.11",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^4.0.0",
