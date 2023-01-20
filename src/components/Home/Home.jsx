@@ -42,8 +42,8 @@ class Home extends Component {
                 >
 
                     <Slider>
-                        <Slide index={0}><img alt="main rv" src="https://i.ebayimg.com/images/g/TaEAAOSwJj1cz67N/s-l1600.jpg" /></Slide>
-                        <Slide index={1}><img alt="main rv" src="https://i.ebayimg.com/images/g/KdQAAOSwSv9cz67P/s-l1600.jpg" /></Slide>
+                        <Slide index={0}><img alt="main rv-1" src={require('./rv_photos/rv-1.webp')} /></Slide>
+                        <Slide index={1}><img alt="main rv" src={require('./rv_photos/rv-1.webp')}  /></Slide>
                         <Slide index={2}><img alt="main rv" src="https://www.ridecdn.com/www.freedomrvaz.com/uploads/Forester.png" /></Slide>
                     </Slider>
                     <ButtonBack>Back</ButtonBack>
